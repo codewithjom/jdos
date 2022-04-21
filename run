@@ -35,11 +35,11 @@ if [[ $install_neovim = true ]]; then
 fi
 
 # Install themes, etc.
-paru -S --noconfirm python-iwlib arc-gtk-theme dracula-gtk-theme dracula-icons-git dracula-cursors-git gruvbox-dark-icons-gtk gruvbox-dark-gtk xcursor-simp1e-gruvbox-dark xcursor-simp1e-tokyo-night
+paru -S --noconfirm python-iwlib arc-gtk-theme dracula-gtk-theme dracula-icons-git dracula-cursors-git gruvbox-dark-icons-gtk gruvbox-dark-gtk xcursor-simp1e-gruvbox-dark xcursor-simp1e-tokyo-night nordic-theme-git papirus-folders-nordic
 paru -S --aur --noconfirm betterlockscreen preload picom-git light-git devour brave-bin
 
 # Install fonts
-paru -S --aur --noconfirm ttf-mononoki nerd-fonts-mononoki nerd-fonts-jetbrains-mono otf-raleway nerd-fonts-hack ttf-ms-fonts ttf-material-icons noto-color-emoji-fontconfig nerd-fonts-inconsolata nerd-fonts-cascadia-code nerd-fonts-roboto-mono
+paru -S --aur --noconfirm ttf-mononoki nerd-fonts-mononoki nerd-fonts-jetbrains-mono otf-raleway nerd-fonts-hack ttf-ms-fonts ttf-material-icons noto-color-emoji-fontconfig nerd-fonts-inconsolata nerd-fonts-cascadia-code nerd-fonts-roboto-mono nerd-fonts-fanstasque-sans-mono
 paru -S --noconfirm adobe-source-code-pro-fonts adobe-source-han-sans-cn-fonts nerd-fonts-victor-mono
 
 # Install packages
