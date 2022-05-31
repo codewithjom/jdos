@@ -12,16 +12,17 @@
 
 git clone https://github.com/codewithjom/jdos.git
 # echo $(git rev-list --count HEAD)
+count=$(git log --oneline | wc -l)
 
-if [[ $(git rev-list --count HEAD) == $(cd jdos;git rev-list --count HEAD) ]]; then
+if [[ $count = $(cd jdos;git rev-list --count HEAD) ]]; then
 
   echo "Updating..."
   # git clone https://github.com/codewithjom/jdos ~/test/jdos-update
-  rm -rf jdos
+  rm -rf jdos 
 
 else
   
   echo "Nothing to do here"
-  rm -rf jdos
+  rm -rf jdos 
   
 fi
