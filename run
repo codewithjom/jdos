@@ -39,9 +39,7 @@ paru -S --noconfirm python-iwlib skeuos-gtk sardi-icons sweet-cursor-theme-git
 paru -S --aur --noconfirm betterlockscreen preload picom-git light-git devour 
 
 # Install fonts
-paru -S --aur --noconfirm ttf-mononoki nerd-fonts-mononoki nerd-fonts-jetbrains-mono otf-raleway nerd-fonts-hack ttf-ms-fonts ttf-material-icons noto-color-emoji-fontconfig nerd-fonts-inconsolata nerd-fonts-cascadia-code nerd-fonts-roboto-mono nerd-fonts-fantasque-sans-mono
-paru -S --noconfirm adobe-source-code-pro-fonts adobe-source-han-sans-cn-fonts nerd-fonts-victor-mono
-sudo pacman -S --noconfirm ttf-cascadia-code ttf-fira-code ttf-fira-mono ttf-font-awesome ttf-inconsolata ttf-jetbrains-mono ttf-ubuntu-font-family
+paru -S --aur --noconfirm ttc-iosevka-aile ttf-cascadia-code ttf-fira-code ttf-fira-mono ttf-font-awesome ttf-inconsolata ttf-jetbrains-mono ttf-ubuntu-font-family ttf-mononoki nerd-fonts-mononoki nerd-fonts-jetbrains-mono otf-raleway nerd-fonts-hack ttf-ms-fonts ttf-material-icons noto-color-emoji-fontconfig nerd-fonts-inconsolata nerd-fonts-cascadia-code nerd-fonts-roboto-mono nerd-fonts-fantasque-sans-mono adobe-source-code-pro-fonts adobe-source-han-sans-cn-fonts nerd-fonts-victor-mono
 
 # Install packages
 sudo pacman -S --noconfirm tlp tlp-rdw ufw qutebrowser rofi lxappearance udisks2 pcmanfm scrot nitrogen lxsession volumeicon xcb-util-cursor exa python-pip openjdk11-src sxiv mpv pavucontrol plocate dunst pamixer conky alacritty blueberry trayer fish brightnessctl blueman stow zathura zathura-pdf-poppler vimb gnome-keyring emacs cmake dmenu xdo xdotool fisher ripgrep
