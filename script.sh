@@ -13,13 +13,15 @@
 git clone https://github.com/codewithjom/jdos.git
 # echo $(git rev-list --count HEAD)
 
-if [[ $(git rev-list --count HEAD) != $(cd jdos;git rev-list --count HEAD) ]]; then
+if [[ $(git rev-list --count HEAD) == $(cd jdos;git rev-list --count HEAD) ]]; then
 
-  echo "Nothing to do here"
+  echo "Updating..."
+  # git clone https://github.com/codewithjom/jdos ~/test/jdos-update
   rm -rf jdos
+
 else
   
-  echo "Updating..."
+  echo "Nothing to do here"
   rm -rf jdos
   
 fi
