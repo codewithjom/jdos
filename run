@@ -35,25 +35,22 @@ if [[ $install_neovim = true ]]; then
 fi
 
 # Install themes, etc.
-paru -S --noconfirm python-iwlib arc-gtk-theme dracula-gtk-theme dracula-icons-git dracula-cursors-git gruvbox-dark-icons-gtk gruvbox-dark-gtk xcursor-simp1e-gruvbox-dark xcursor-simp1e-tokyo-night nordic-theme-git papirus-folders-nordic
-paru -S --aur --noconfirm betterlockscreen preload picom-git light-git devour brave-bin
+paru -S --noconfirm python-iwlib skeuos-gtk sardi-icons sweet-cursor-theme-git
+paru -S --aur --noconfirm betterlockscreen preload picom-git light-git devour 
 
 # Install fonts
 paru -S --aur --noconfirm ttf-mononoki nerd-fonts-mononoki nerd-fonts-jetbrains-mono otf-raleway nerd-fonts-hack ttf-ms-fonts ttf-material-icons noto-color-emoji-fontconfig nerd-fonts-inconsolata nerd-fonts-cascadia-code nerd-fonts-roboto-mono nerd-fonts-fantasque-sans-mono
 paru -S --noconfirm adobe-source-code-pro-fonts adobe-source-han-sans-cn-fonts nerd-fonts-victor-mono
+sudo pacman -S --noconfirm ttf-cascadia-code ttf-fira-code ttf-fira-mono ttf-font-awesome ttf-inconsolata ttf-jetbrains-mono ttf-ubuntu-font-family
 
 # Install packages
-sudo pacman -S --noconfirm tlp tlp-rdw ufw qutebrowser rofi lxappearance udisks2 pcmanfm scrot nitrogen lxsession volumeicon xcb-util-cursor exa python-pip openjdk11-src sxiv mpv pavucontrol plocate dunst pamixer conky alacritty min blueberry trayer fish brightnessctl blueman stow zathura zathura-pdf-poppler vimb gnome-keyring emacs cmake dmenu xdo xdotool fisher ripgrep
-
-# Install more fonts
-sudo pacman -S --noconfirm ttf-cascadia-code ttf-fira-code ttf-fira-mono ttf-font-awesome ttf-inconsolata ttf-jetbrains-mono ttf-ubuntu-font-family
+sudo pacman -S --noconfirm tlp tlp-rdw ufw qutebrowser rofi lxappearance udisks2 pcmanfm scrot nitrogen lxsession volumeicon xcb-util-cursor exa python-pip openjdk11-src sxiv mpv pavucontrol plocate dunst pamixer conky alacritty blueberry trayer fish brightnessctl blueman stow zathura zathura-pdf-poppler vimb gnome-keyring emacs cmake dmenu xdo xdotool fisher ripgrep
 
 # Install starship prompt (needed)
 sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 chsh -s /bin/fish $USER
 pip3 install psutil
 
-sudo pacman -Sy
 paru -S qtile sxhkd pfetch xmonad xmonad-contrib xmobar
 git	clone https://github.com/codewithjom/dotfiles.git ~/dotfiles
 cd ~/dotfiles
