@@ -1,59 +1,83 @@
 #!/bin/sh
 
 # JDOS
+sudo pacman -Syy
 printf "\e[1;32m###################################\e[0m\n"
 printf "\e[1;32m## You are about to install JDOS ##\e[0m\n"
 printf "\e[1;32m###################################\e[0m\n"
 
-sudo pacman -Sy
-install_ly=false
-install_neovim=true
-install_paru=true
+read -p "Do you want to install PARU the better AUR Helper? [Y/n] " yn
+case $yn in
+	[Yy]* ) git clone https://aur.archlinux.org/paru.git $HOME/.paru;cd $HOME/.paru;makepkg -si --noconfirm;;
+	[Nn]* ) ;;
+	"" ) git clone https://aur.archlinux.org/paru.git $HOME/.paru;cd $HOME/.paru;makepkg -si --noconfirm;;
+	* )	echo "Please answer y/n TRY AGAIN!";;
+esac
 
-if [[ $install_paru = true ]]; then
-	cd ~/
-	git clone https://aur.archlinux.org/paru.git
-	mv paru .paru;cd .paru/;makepkg -si --noconfirm;cd
-fi
+read -p "Do you want to install NEOVIM? [Y/n] " yn
+case $yn in
+	[Yy]* ) 
+		sudo pacman -S neovim nodejs python-pip
+		curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+		curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+		yarn global add neovim
+		paru -S npm
+		sudo npm i -g typescript typescript-language-server
+		python3 -m pip install --user --upgrade pynvim;cd;;
+	[Nn]* ) ;;
+	"" ) 
+		sudo pacman -S neovim nodejs python-pip
+		curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+		curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+		yarn global add neovim
+		paru -S npm
+		sudo npm i -g typescript typescript-language-server
+		python3 -m pip install --user --upgrade pynvim;cd;;
+	* )	echo "Please answer y/n TRY AGAIN!";;
+esac
 
-if [[ $install_ly = true ]]; then
-	cd ~/
-  git clone https://aur.archlinux.org/ly
-  mv ly .ly;cd .ly;makepkg -si --noconfirm;cd
-  sudo systemctl enable ly
-fi
+read -p "Do you want to install LY as Display Manager? [Y/n] " yn
+case $yn in
+	[Yy]* ) git clone https://aur.archlinux.org/ly $HOME/.ly;cd .ly;makepkg -si --noconfirm;sudo systemctl enable ly.service;;
+	[Nn]* ) ;;
+	"" ) git clone https://aur.archlinux.org/ly $HOME/.ly;cd .ly;makepkg -si --noconfirm;sudo systemctl enable ly.service;;
+	* )	echo "Please answer y/n TRY AGAIN!";;
+esac
 
-if [[ $install_neovim = true ]]; then
-	cd ~/
-	sudo pacman -S --noconfirm neovim nodejs python-pip
-	curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
-	yarn global add neovim
-	paru -S --noconfirm	npm
-	sudo npm i -g typescript typescript-language-server
-	python3 -m pip install --user --upgrade pynvim;cd
-fi
+printf "\e[1;32m#########################################\e[0m\n"
+printf "\e[1;32m## Installing GTK, ICONS, CURSOR, ETC. ##\e[0m\n"
+printf "\e[1;32m#########################################\e[0m\n"
 
-# Install themes, etc.
-paru -S --noconfirm python-iwlib skeuos-gtk sardi-icons sweet-cursor-theme-git
-paru -S --aur --noconfirm betterlockscreen preload picom-git light-git devour 
+paru -S python-iwlib skeuos-gtk sardi-icons sweet-cursor-theme-git
+paru -S --aur betterlockscreen preload picom-git light-git devour 
 
-# Install fonts
-paru -S --aur --noconfirm ttc-iosevka-aile ttf-cascadia-code ttf-fira-code ttf-fira-mono ttf-font-awesome ttf-inconsolata ttf-jetbrains-mono ttf-ubuntu-font-family ttf-mononoki nerd-fonts-mononoki nerd-fonts-jetbrains-mono otf-raleway nerd-fonts-hack ttf-ms-fonts ttf-material-icons noto-color-emoji-fontconfig nerd-fonts-inconsolata nerd-fonts-cascadia-code nerd-fonts-roboto-mono nerd-fonts-fantasque-sans-mono adobe-source-code-pro-fonts adobe-source-han-sans-cn-fonts nerd-fonts-victor-mono
+printf "\e[1;32m######################\e[0m\n"
+printf "\e[1;32m## Installing FONTS ##\e[0m\n"
+printf "\e[1;32m######################\e[0m\n"
 
-# Install packages
-sudo pacman -S --noconfirm tlp tlp-rdw ufw qutebrowser rofi lxappearance udisks2 pcmanfm scrot nitrogen lxsession volumeicon xcb-util-cursor exa python-pip openjdk11-src sxiv mpv pavucontrol plocate dunst pamixer conky alacritty blueberry trayer fish brightnessctl blueman stow zathura zathura-pdf-poppler vimb gnome-keyring emacs cmake dmenu xdo xdotool fisher ripgrep
+paru -S --aur ttc-iosevka-aile ttf-cascadia-code ttf-fira-code ttf-fira-mono ttf-font-awesome ttf-inconsolata ttf-jetbrains-mono ttf-ubuntu-font-family ttf-mononoki nerd-fonts-mononoki nerd-fonts-jetbrains-mono otf-raleway nerd-fonts-hack ttf-ms-fonts ttf-material-icons noto-color-emoji-fontconfig nerd-fonts-inconsolata nerd-fonts-cascadia-code nerd-fonts-roboto-mono nerd-fonts-fantasque-sans-mono adobe-source-code-pro-fonts adobe-source-han-sans-cn-fonts nerd-fonts-victor-mono
 
-# Install starship prompt (needed)
+printf "\e[1;32m#############################\e[0m\n"
+printf "\e[1;32m## Installing DEPENDENCIES ##\e[0m\n"
+printf "\e[1;32m#############################\e[0m\n"
+
+sudo pacman -S tlp tlp-rdw ufw qutebrowser rofi lxappearance udisks2 pcmanfm scrot nitrogen lxsession volumeicon xcb-util-cursor exa python-pip openjdk11-src sxiv mpv pavucontrol plocate dunst pamixer conky alacritty blueberry trayer fish brightnessctl blueman stow zathura zathura-pdf-poppler vimb gnome-keyring emacs cmake dmenu xdo xdotool fisher ripgrep
 sh -c "$(curl -fsSL https://starship.rs/install.sh)"
-chsh -s /bin/fish $USER
+
+if [[ $(which $SHELL) = '/bin/fish' ]]; then 
+	chsh -s /bin/fish $USER
+else
+	sudo pacman -S fish
+	chsh -s /bin/fish $USER
+fi
+
 pip3 install psutil
 
-paru -S qtile sxhkd pfetch xmonad xmonad-contrib xmobar
-git	clone https://github.com/codewithjom/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
+paru -S qtile sxhkd pfetch
+git	clone https://github.com/codewithjom/jdos-repo.git ~/.jdos-repo
+cd ~/.jdos-repo
 cp -rf .* ~/
-rm -rf ~/.git ~/LICENSE ~/.stow-local-ignore
+rm -rf ~/.git ~/README.org
 
 # Enable daemon
 sudo systemctl enable tlp.service
@@ -68,6 +92,7 @@ sudo systemctl enable nvidia-suspend.service
 printf "\e[1;32m##############################\e[0m\n"
 printf "\e[1;32m## JDOS has been installed! ##\e[0m\n"
 printf "\e[1;32m##############################\e[0m\n"
+
 while true; do
 	read -p "Do you want to reboot? (recommended) [Y/n] " yn
 	case $yn in
