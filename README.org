@@ -7,7 +7,7 @@
 
 *Warning*: Use this script at your own risks!
 
-A post-installation script that allows you to install a window manger and other softwares that I've configured. The script will install all the softwares that I use and clone my dotfiles repo, you can check my dotfiles repo to let you know what softwares should this script will install! I recommend to use this script if you want to use my configs because in this script it has already the dependencies and ready to be use out of the box!
+A post-installation script that allows you to install a window manger and other softwares that I've configured. The configurations are available in [[https://github.com/codewithjom/jdos-repo][jdos-repo]], but I recommend to use this script to install the dependencies of the softwares.
 
 * Installation
 
